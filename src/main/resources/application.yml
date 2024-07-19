@@ -1,0 +1,8 @@
+my:
+  property: "hello world"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh

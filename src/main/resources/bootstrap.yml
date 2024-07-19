@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: spring-demo
+  # config:
+  #   location: file:/config/
+  cloud:
+    kubernetes:
+      config:
+        name: application-config
+        namespace: default
+        enableApi: true
+      reload:
+        enabled: true
+        mode: event
+        strategy: refresh

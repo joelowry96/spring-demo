@@ -1,0 +1,119 @@
+{
+	"info": {
+		"_postman_id": "6ff8f505-5bab-4300-8a1e-d121fcec2799",
+		"name": "spring-demo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9212363"
+	},
+	"item": [
+		{
+			"name": "/property",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base-url}}/property",
+					"host": [
+						"{{base-url}}"
+					],
+					"path": [
+						"property"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/update-configmap",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "http://localhost:30000/update-configmap?namespace=default&name=application-config&key=my&value=changed",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "30000",
+					"path": [
+						"update-configmap"
+					],
+					"query": [
+						{
+							"key": "namespace",
+							"value": "default"
+						},
+						{
+							"key": "name",
+							"value": "application-config"
+						},
+						{
+							"key": "key",
+							"value": "my"
+						},
+						{
+							"key": "value",
+							"value": "changed"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/actuator/refersh",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "http://localhost:30000/actuator/refresh",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "30000",
+					"path": [
+						"actuator",
+						"refresh"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base-url",
+			"value": "http://localhost:30000",
+			"type": "string"
+		}
+	]
+}
