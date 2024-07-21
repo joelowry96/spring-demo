@@ -6,5 +6,4 @@ metadata:
 rules:
 - apiGroups: [""]
   resources: ["configmaps"]
-  resourceNames: ["application-config"]
   verbs: ["get", "list", "watch", "update", "patch"]

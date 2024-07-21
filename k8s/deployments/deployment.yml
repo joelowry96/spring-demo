@@ -50,3 +50,42 @@ spec:
     nodePort: 30000
   selector:
     app: spring-demo
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-cloud-kubernetes-configuration-watcher
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spring-cloud-kubernetes-configuration-watcher
+  template:
+    metadata:
+      labels:
+        app: spring-cloud-kubernetes-configuration-watcher
+    spec:
+      containers:
+      - name: spring-cloud-kubernetes-configuration-watcher
+        image: springcloud/spring-cloud-kubernetes-configuration-watcher:latest
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: SPRING_PROFILES_ACTIVE
+          value: kubernetes
+        volumeMounts:
+        - name: config-volume
+          mountPath: /config
+        resources:
+          limits:
+            cpu: "1"
+            memory: "512Mi"
+          requests:
+            cpu: "0.5"
+            memory: "256Mi"
+      volumes:
+      - name: config-volume
+        configMap:
+          name: application-config
+          items:
+          - key: application.yml
+            path: application.yml

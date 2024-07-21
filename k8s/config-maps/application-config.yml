@@ -2,5 +2,10 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: application-config
+  labels:
+    spring.cloud.kubernetes.config: true
 data:
   application.yml: |
+    # Your application.yml content goes here
+    my:
+      property: "initial ConfigMap value"

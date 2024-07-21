@@ -7,86 +7,195 @@
 	},
 	"item": [
 		{
-			"name": "/property",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{base-url}}/property",
-					"host": [
-						"{{base-url}}"
-					],
-					"path": [
-						"property"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "/update-configmap",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "urlencoded",
-					"urlencoded": []
-				},
-				"url": {
-					"raw": "http://localhost:30000/update-configmap?namespace=default&name=application-config&key=my&value=changed",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "30000",
-					"path": [
-						"update-configmap"
-					],
-					"query": [
-						{
-							"key": "namespace",
-							"value": "default"
-						},
-						{
-							"key": "name",
-							"value": "application-config"
-						},
-						{
-							"key": "key",
-							"value": "my"
-						},
-						{
-							"key": "value",
-							"value": "changed"
+			"name": "kubectl",
+			"item": [
+				{
+					"name": "/property",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{kubectl-base-url}}/property",
+							"host": [
+								"{{kubectl-base-url}}"
+							],
+							"path": [
+								"property"
+							]
 						}
-					]
+					},
+					"response": []
+				},
+				{
+					"name": "/update-configmap",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{kubectl-base-url}}/update-configmap?namespace=default&name=application-config&key=my.property&value=changed",
+							"host": [
+								"{{kubectl-base-url}}"
+							],
+							"path": [
+								"update-configmap"
+							],
+							"query": [
+								{
+									"key": "namespace",
+									"value": "default"
+								},
+								{
+									"key": "name",
+									"value": "application-config"
+								},
+								{
+									"key": "key",
+									"value": "my.property"
+								},
+								{
+									"key": "value",
+									"value": "changed"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/actuator/refersh",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{kubectl-base-url}}/actuator/refresh",
+							"host": [
+								"{{kubectl-base-url}}"
+							],
+							"path": [
+								"actuator",
+								"refresh"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "/actuator/refersh",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "urlencoded",
-					"urlencoded": []
+			"name": "java",
+			"item": [
+				{
+					"name": "/property",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{java-base-url}}/property",
+							"host": [
+								"{{java-base-url}}"
+							],
+							"path": [
+								"property"
+							]
+						}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:30000/actuator/refresh",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "30000",
-					"path": [
-						"actuator",
-						"refresh"
-					]
+				{
+					"name": "/update-configmap",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{java-base-url}}/update-configmap?namespace=default&name=application-config&key=my.property&value=changed",
+							"host": [
+								"{{java-base-url}}"
+							],
+							"path": [
+								"update-configmap"
+							],
+							"query": [
+								{
+									"key": "namespace",
+									"value": "default"
+								},
+								{
+									"key": "name",
+									"value": "application-config"
+								},
+								{
+									"key": "key",
+									"value": "my.property"
+								},
+								{
+									"key": "value",
+									"value": "changed"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/actuator/refersh",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{java-base-url}}/actuator/refresh",
+							"host": [
+								"{{java-base-url}}"
+							],
+							"path": [
+								"actuator",
+								"refresh"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/actuator/health",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{java-base-url}}/actuator/health",
+							"host": [
+								"{{java-base-url}}"
+							],
+							"path": [
+								"actuator",
+								"health"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		}
 	],
 	"event": [
@@ -111,8 +220,13 @@
 	],
 	"variable": [
 		{
-			"key": "base-url",
+			"key": "kubectl-base-url",
 			"value": "http://localhost:30000",
+			"type": "string"
+		},
+		{
+			"key": "java-base-url",
+			"value": "http://localhost:8080",
 			"type": "string"
 		}
 	]

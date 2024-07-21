@@ -1,8 +1,12 @@
 my:
   property: "hello world"
+  property2: "222222"
 
 management:
+  endpoint:
+    refresh:
+      enabled: true
   endpoints:
     web:
       exposure:
-        include: refresh
+        include: "health,refresh"
